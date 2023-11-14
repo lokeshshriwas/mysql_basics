@@ -1,0 +1,15 @@
+{
+  "name": "mysql_basics",
+  "version": "1.0.0",
+  "description": "basics of mySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lokesh",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.2.0",
+    "mysql2": "^3.6.3"
+  }
+}
