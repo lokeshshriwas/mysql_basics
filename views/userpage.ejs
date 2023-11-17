@@ -18,14 +18,24 @@
             <th>Email</th>
         </tr>
         <% for(let user of users){ %>
-        <tr>
-            <td><%= user.id%></td>
-            <td><%= user.username%></td>
-            <td><%= user.email%></td>
-        </tr>
+            <tr>
+                <td><%= user.id%></td>
+                <td><%= user.username%></td>
+                <td><%= user.email%></td>
+                <td>
+                    <form action="user/<%= user.id %>/edit" method="get">
+                        <button>Edit username</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="user/<%= user.id %>/delete" method="get">
+                        <button>Delete</button>
+                    </form>
+                </td>
+                
+            </tr>
+
         <% } %>
     </table>
 </body>
 </html>
-
-

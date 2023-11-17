@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit username</title>
+</head>
+<body>
+    <h1>Your are trying to update the username of the email:  <%= editableObj.email %></h1>
+    <form action="/user/<%= editableObj.id %>?_method=PATCH" method="post">
+        <textarea name="username" cols="30" rows="10"><%= editableObj.username%></textarea>
+        <br>
+        <input type="password" name="password">
+        <button>Submit</button>
+    </form>
+</body>
+</html>
