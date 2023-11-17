@@ -1,10 +1,11 @@
 const { faker } = require('@faker-js/faker');
+const { v4: uuidv4 } = require('uuid');
 const mysql = require('mysql2');
 const express = require('express')
 const app = express()
 const path = require("path")
 var methodOverride = require('method-override');
-const { PassThrough } = require('stream');
+// const { PassThrough } = require('stream');
 
 app.use(methodOverride('_method'))
 app.set("view engine", "ejs");
@@ -106,6 +107,9 @@ const connection = mysql.createConnection({
     })
   })
 
+
+  // delete route functioning
+
   app.delete("/user/:id", (req, res)=>{
     let {id} = req.params
     let {password: formPass} = req.body 
@@ -128,6 +132,24 @@ const connection = mysql.createConnection({
     })
   })
   
+  // new user adding route
+
+  app.get("/user/new",(req, res)=>{
+    res.render("newuser")
+  })
+
+  app.post("/user/new", (req, res)=>{
+    let main = req.body
+    main.id = uuidv4()
+
+    let q = `INSERT INTO user SET ?`
+
+    connection.query(q, main, (err, result)=>{
+      if(err) throw err
+      res.redirect("/user")
+    })
+  })
+
   app.listen(3000, ()=>{
     console.log("server is listening to 3000")
   })
